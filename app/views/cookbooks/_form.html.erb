@@ -1,0 +1,11 @@
+<%= form_for @cookbook do |f| %>
+<%= f.label :title %><br>
+<%= f.text_field :title %><br><br>
+<%= f.label :description %><br>
+<%= f.text_field :description %><br><br>
+<%= f.radio_button :public, true, :checked => true %>
+<%= label :public_yes, 'Public' %>      
+<%= f.radio_button :public, false %>
+<%= label :public_no, 'Private' %><br><br>
+<%= f.submit %>
+<% end %>
