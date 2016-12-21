@@ -4,7 +4,7 @@ class CookbooksController < ApplicationController
     if current_user.the_pretty_admin?
       @cookbooks = Cookbook.all
     else
-  	 @cookbooks = Cookbook.where(user_id: current_user.id)
+  	 @cookbooks = Cookbook.where(user_id: current_user.id).page(params[:page]).order('created_at DESC')
     end
   end
 
@@ -20,6 +20,7 @@ class CookbooksController < ApplicationController
   end
 
   def show
+    @recipes = Recipe.where(:cookbook_id => params[:id]).page(params[:page]).order('created_at DESC')
   	@cookbook = Cookbook.find(params[:id])
   end
 
