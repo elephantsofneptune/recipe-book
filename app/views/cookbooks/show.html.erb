@@ -1,4 +1,4 @@
-<% if @cookbook.public == true %>
+<% if @cookbook.public == true || current_user == @cookbook.user %>
 
 	<div align="center">
 	<h1><%= @cookbook.title %></h1>
