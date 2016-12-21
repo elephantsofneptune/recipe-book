@@ -1,4 +1,7 @@
 <h1>Recipes#edit</h1>
 <p>Find me in app/views/recipes/edit.html.erb</p>
-
+<% if current_user == @cookbook.user %>
 <%= render 'edit_form' %>
+<% else %>
+You are not permitted to edit this recipe.
+<% end %>

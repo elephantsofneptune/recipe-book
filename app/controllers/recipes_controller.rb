@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   def new
+    @cookbook = Cookbook.find(params[:cookbook_id])
   	@recipe = Recipe.new
   end
 
@@ -11,6 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @cookbook = Cookbook.find(params[:cookbook_id])    
   	@recipe = Recipe.find(params[:id])
   end
 
@@ -22,6 +24,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @cookbook = Cookbook.find(params[:cookbook_id])    
   	@recipe = Recipe.find(params[:id])
   end
 
