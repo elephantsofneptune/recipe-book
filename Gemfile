@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Pagination through will_paginate
+gem 'will_paginate', '~> 3.1.0'
 # Bootstrapping
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass'
