@@ -36,7 +36,7 @@
                   <a href="#"><i class="fa fa-gift fa-lg"></i> My Cookbooks <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="products">
-                <li><%= link_to "View All Cookbooks", cookbooks_path %></li>
+                <li><%= link_to "VIEW ALL", cookbooks_path %></li>
                 <% if current_user.cookbooks.length > 0 %>
                     <% current_user.cookbooks.each do |x| %>
                     <li><%= link_to x.title, cookbook_path(x) %></li>
@@ -50,8 +50,8 @@
                 </li>  
                 <ul class="sub-menu collapse" id="service">
 				<% if Subscription.where(user_id: current_user.id).count > 0 %>
-                    <%= current_user.subscriptions.each do |x| %>
-                    <li><a href="#"><%= Cookbook.find(x.cookbook_id) %></a></li>
+                    <% current_user.subscriptions.each do |x| %>
+                    <li><%= link_to Cookbook.find(x.cookbook_id).title, cookbook_path(x.cookbook_id) %></a></li>
  					<% end %>
  				<% else %>
  				<li>None! Start subscribing one today!</li>

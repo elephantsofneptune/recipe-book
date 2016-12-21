@@ -1,7 +1,9 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<div class="white-bg col-md-5"><h1>Create New Recipe</h1>
 <% if current_user == @cookbook.user %>
 <%= render 'form' %>
 <% else %>
 You are not permitted to add recipes to this cookbook.
 <% end %>
+<br>
+</div>
+
