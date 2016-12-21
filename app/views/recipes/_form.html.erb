@@ -1,0 +1,13 @@
+<%= form_for [:cookbook, @recipe] do |f| %>
+<%= f.label :title %><br>
+<%= f.text_field :title %><br><br>
+<%= f.label :ingredients %><br>
+<%= f.text_field :ingredients, multiple: true %><br>
+<%= f.text_field :ingredients, multiple: true %><br>
+<%= f.text_field :ingredients, multiple: true %><br><br>
+<%= f.label :steps %><br>
+<%= f.text_field :steps, multiple: true %><br>
+<%= f.text_field :steps, multiple: true %><br>
+<%= f.text_field :steps, multiple: true %><br><br>
+<%= f.submit %>
+<% end %>
