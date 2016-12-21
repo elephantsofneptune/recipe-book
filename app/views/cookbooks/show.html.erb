@@ -4,4 +4,6 @@ This is where all the recipes live
 Title:<br><%= link_to recipe.title, cookbook_recipe_path(@cookbook, recipe) %><br><br>
 <% end %>
 
+<% if current_user == @cookbook.user %>
 <%= button_to "Add Recipe", new_cookbook_recipe_path(@cookbook), method: :get %>
+<% end %>

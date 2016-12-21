@@ -1,4 +1,7 @@
 <h1>Recipes#new</h1>
 <p>Find me in app/views/recipes/new.html.erb</p>
-
+<% if current_user == @cookbook.user %>
 <%= render 'form' %>
+<% else %>
+You are not permitted to add recipes to this cookbook.
+<% end %>
