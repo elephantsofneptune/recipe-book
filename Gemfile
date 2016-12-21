@@ -7,6 +7,8 @@ end
 
 # Social log-in gems
 gem "omniauth-google-oauth2"
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 # Use Figaro for key and secret protection
 gem 'figaro'
