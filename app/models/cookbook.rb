@@ -6,7 +6,7 @@ class Cookbook < ApplicationRecord
   has_many :subscriptions
   mount_uploader :book_cover, BookCoverUploader  
   scope :public_entry, -> { where public: true }  
-  self.per_page = 2
+  self.per_page = 4
 
   def public?
   	byebug
