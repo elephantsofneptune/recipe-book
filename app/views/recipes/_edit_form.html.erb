@@ -1,0 +1,15 @@
+<%= form_for [:cookbook, @recipe] do |f| %>
+<%= f.label :title %><br>
+<%= f.text_field :title %><br><br>
+<%= f.label :ingredients %><br>
+<% i_num = 0 %>
+<% @recipe.ingredients.length.times do %>
+<%= f.text_field :ingredients, multiple: true, value: @recipe.ingredients[i_num] %><% i_num += 1 %><br>
+<% end %><br>
+<%= f.label :steps %><br>
+<% s_num = 0 %>
+<% @recipe.steps.length.times do %>
+<%= f.text_field :steps, multiple: true, value: @recipe.steps[s_num] %><% s_num += 1 %><br>
+<% end %><br>
+<%= f.submit %>
+<% end %>

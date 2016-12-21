@@ -1,0 +1,18 @@
+<h1>Recipes#show</h1>
+<p>Find me in app/views/recipes/show.html.erb</p>
+<h2><%= @recipe.title %></h2>
+Ingredients:
+	<ol>
+	<% @recipe.ingredients.each do |x| %>
+		<li><%= x %></li>
+	<% end %>
+	</ol>
+Steps:
+	<ol>
+	<% @recipe.steps.each do |y| %>
+		<li><%= y %></li>
+	<% end %>
+	</ol>
+	<%= link_to "Edit", edit_cookbook_recipe_path(@recipe.cookbook, @recipe) %>&nbsp;
+	<%= link_to "Delete", cookbook_recipe_path(@recipe.cookbook, @recipe), method: :delete %>
+	<%= link_to "Back", cookbook_path(@recipe.cookbook) %>
