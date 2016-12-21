@@ -1,8 +1,11 @@
 class CookbooksController < ApplicationController
 
-
   def index
-  	@cookbooks = Cookbook.where(user_id: current_user.id)
+    if current_user.the_pretty_admin?
+      @cookbooks = Cookbook.all
+    else
+  	 @cookbooks = Cookbook.where(user_id: current_user.id)
+    end
   end
 
   def new
