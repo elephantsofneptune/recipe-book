@@ -57,4 +57,8 @@
 <% end %>
 <% end %>
 
+<% if @recipes.length < 1 && @cookbooks.length < 1 %>
+<div class="notice"><p>Sorry, no public cookbooks or recipes match your search. Please try again.</p></div>
+<% end %>
+
 
