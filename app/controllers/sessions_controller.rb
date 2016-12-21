@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   	end
   	if user && user.authenticate(params[:session][:password])
   	  log_in user
-  	  redirect_to cookbooks_index_path
+  	  redirect_to cookbooks_path
   	else
   	  flash[:danger] = 'Invalid username / email and password combination'
   	  redirect_to login_path and return

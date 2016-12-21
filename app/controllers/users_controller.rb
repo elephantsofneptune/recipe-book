@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       log_in(@user)
       flash[:notice] = "You signed up successfully"
       flash[:color]= "valid"
-      redirect_to cookbooks_index_path
+      redirect_to cookbooks_path
     else
       flash[:notice] = "Form is invalid"
       flash[:color]= "invalid"
