@@ -1,0 +1,15 @@
+<h2>Cookbooks</h2>
+
+<% @cookbooks.each do |c| %>
+	<%= c.title %>
+<% end %>
+
+<%= "N/A" if @cookbooks.length == 0 %>
+
+<h2>Recipes</h2>
+
+<% @recipes.each do |r| %>
+	<%= r.title %>
+<% end %>
+
+<%= "N/A" if @recipes.length == 0 %>

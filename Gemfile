@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Use Pgsearch for dynamic searching
+gem 'pg_search'
 # User Bcrypt to encrypt user's passwords
 gem 'bcrypt', '~> 3.1.7' 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
