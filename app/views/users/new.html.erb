@@ -1,0 +1,35 @@
+  <h1>Sign Up</h1>
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+    <p> Username:</br> <%= f.text_field :username%> </p>
+    <p> Email:</br> <%= f.text_field :email%> </p>
+    <p> Password:</br> <%= f.password_field :password %></p>
+    <p> Password Confirmation:</br> <%= f.password_field :password_confirmation %> </p>
+    <p> You may fill this up later after your account is created :) </p>
+    <p> First Name:</br> <%= f.text_field :first_name %></p> 
+    <p> Last Name:</br> <%= f.text_field :last_name %></p>    <p> Date of Birth:</br> <%= f.date_field :date_of_birth %></p>
+    <p> Description:</br> <%= f.text_field :description %></p>
+    <p> Type:</br></p>
+  <%= f.radio_button :type_of_cook, 'homecooker', :checked => true %> 
+  <%= label :type_of_cook_homecooker, 'Home-Cooker' %>
+  <%= f.radio_button :type_of_cook, 'chef' %>
+  <%= label :type_of_cook_chef, 'Chef' %>
+  <%= f.radio_button :type_of_cook, 'hobbyist' %>
+  <%= label :type_of_cook_hobbyist, 'Hobbyist' %>      
+  <%= f.radio_button :type_of_cook, 'others' %>
+  <%= label :type_of_cook_others, 'Others' %><br>
+  <p> Profile:</br></p>
+    <%= f.radio_button :public, true, :checked => true %>
+  <%= label :public_yes, 'Public' %>      
+  <%= f.radio_button :public, false %>
+  <%= label :public_no, 'Private' %><br>
+  <br><br>               
+    <%= f.submit :Signup %>
+  <% end %>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

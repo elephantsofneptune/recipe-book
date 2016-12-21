@@ -1,0 +1,13 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+<% if flash[:danger] != nil %>
+<%= flash[:danger] %><br><br>
+<% flash[:danger] = nil %>
+<% end %>
+<%= form_for(:session, url: login_path) do |f| %>
+Username/E-mail :<br>
+<%= f.text_field :username_email %><br>
+<%= f.label :password %> :<br>
+<%= f.password_field :password %><br>
+<%= f.submit "Log In" %>
+<% end %>
