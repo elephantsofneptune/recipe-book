@@ -5,7 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# Use Pgsearch for dynamic searching
+# Social log-in gems
+gem "omniauth-google-oauth2"
+
+# Use Figaro for key and secret protection
+gem 'figaro'
+# Use PgSearch for dynamic searching
 gem 'pg_search'
 # User Bcrypt to encrypt user's passwords
 gem 'bcrypt', '~> 3.1.7' 
