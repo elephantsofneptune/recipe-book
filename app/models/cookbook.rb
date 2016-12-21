@@ -3,6 +3,7 @@ class Cookbook < ApplicationRecord
   multisearchable :against => [:title, :description]
   belongs_to :user
   has_many :recipes
+  has_many :subscriptions
   mount_uploader :book_cover, BookCoverUploader  
   scope :public_entry, -> { where public: true }  
 

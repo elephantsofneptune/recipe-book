@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
   	params.permit!
     @user = User.new(params[:user])
+    @user.avatar = "http://www.librarything.com/wiki/images/3/34/Book-cover-black.jpg"
     if @user.save
       log_in(@user)
       flash[:notice] = "You signed up successfully"

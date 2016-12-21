@@ -16,6 +16,8 @@ Private
 	<%= button_to "Edit", edit_cookbook_path(book), method: :get %>
 	<% end %>
 	<%= button_to "Delete", cookbook_path(book), method: :delete %><br><br>
+<% elsif current_user != book.user %>
+	<%= button_to "Subscribe", cookbook_subscriptions_path(book) %>
 <% end %>
 <% end %>
 

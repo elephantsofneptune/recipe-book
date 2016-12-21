@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :cookbooks
+  has_many :subscriptions
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates :email, :presence => true, :uniqueness => true
   mount_uploader :avatar, AvatarUploader
@@ -12,6 +13,7 @@ def self.from_omniauth(auth)
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.remote_avatar_url = auth.info.image.gsub('http://','https://')
       user.password = SecureRandom.urlsafe_base64
       if auth.info.email != nil
         user.username = auth.info.email[/[^@]+/]
