@@ -1,10 +1,5 @@
-  <h1>Sign Up</h1>
-  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-    <p> Username:</br> <%= f.text_field :username%> </p>
-    <p> Email:</br> <%= f.text_field :email%> </p>
-    <p> Password:</br> <%= f.password_field :password %></p>
-    <p> Password Confirmation:</br> <%= f.password_field :password_confirmation %> </p>
-    <p> You may fill this up later after your account is created :) </p>
+<h1>Edit Profile</h1>
+  <%= form_for(@user, :url => {:controller => 'users', :action => 'update'}) do |f| %>
     <p> Avatar:<br>
     <%= f.file_field :avatar %></p>
     <p> First Name:</br> <%= f.text_field :first_name %></p> 
@@ -25,7 +20,7 @@
   <%= f.radio_button :public, false %>
   <%= label :public_no, 'Private' %><br>
   <br><br>               
-    <%= f.submit :Signup %>
+    <%= f.submit "Edit Profile" %>
   <% end %>
   <% if @user.errors.any? %>
     <ul class="Signup_Errors">

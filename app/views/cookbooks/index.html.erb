@@ -4,7 +4,7 @@
 <%= button_to "Create Cookbook", new_cookbook_path, method: :get %>
 <% end %>
 <% @cookbooks.all.each do |book| %>
-<%= link_to book.title, cookbook_path(book) %><br>
+<%= link_to book.title, cookbook_path(book) %><br><%= image_tag(book.book_cover.url(:thumb)) %><br>
 <%= book.description %><br>
 <% if book.public == true %>
 Public
