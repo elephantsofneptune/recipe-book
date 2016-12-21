@@ -1,0 +1,25 @@
+<% if @user.public == true || current_user == @user %>
+
+<div class="white-bg col-md-5"><div align="center">
+<h1><%= @user.username %>'s Profile</h1>
+    <%= image_tag(current_user.avatar.url, :class => "avatar-resize") %></p>
+    <p> <b>Full Name:</b><%= @user.full_name %></p> 
+    <p> <b>Age:</b> Age here</p>
+    <p> <b>Description:</b></br> <%= @user.description %></p>
+    <p> <b>Type:</b> <% @user.type_of_cook %></br></p>
+        <p> <b>Cookbooks:</b></p>
+        <% if @user.cookbooks.count < 1 %>
+        <p>This user has yet to create a cookbook.</p>
+        <% else %>
+        <ul>
+        <% @user.cookbooks.all.each do |x| %>
+        <li><%= link_to x.title, cookbook_path(x) %></li>
+        <% end %></ul>
+        <% end %>
+  <br>
+  </div>
+</div>
+
+<% else %>
+<div class="notice"><p>Sorry, the user has privated their profile.</p></div>
+<% end %>

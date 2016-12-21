@@ -2,7 +2,7 @@
 
 	<div align="center">
 	<h1><%= @cookbook.title %></h1>
-	<p>by <%= @cookbook.user.username %></p>
+	<p>by <%= link_to @cookbook.user.username, user_path(@cookbook.user) %></p>
 	</div>
 	<% if current_user == @cookbook.user %>
 	<%= button_to "Add Recipe", new_cookbook_recipe_path(@cookbook), method: :get, class: "btn btn-primary col-md-12" %>
@@ -15,7 +15,7 @@
 	<% end %>
 	<% if @cookbook.subscriptions.count > 0 %>
 	<br><u>Subscribers:</u><br> <% @cookbook.subscriptions.all.each do |subscribers| %>
-		<%= image_tag(User.find(subscribers.user_id).avatar.url, :class => "subscriber-resize") %>
+		<a href="/users/<%= subscribers.user_id %>"><%= image_tag(User.find(subscribers.user_id).avatar.url, :class => "subscriber-resize") %></a>
 		<% end %>
 	<% end %>
 	<% @cookbook.recipes.each do |recipe| %>
