@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'cookbooks/index'
+
+  get 'cookbooks/new'
+
+  get 'cookbooks/edit'
+
   get    '/signup',  to: 'users#new'
   post	 '/signup',	 to: 'users#create'
   get    '/login',   to: 'sessions#new'
