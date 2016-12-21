@@ -1,4 +1,4 @@
-<h1>Edit Profile</h1>
+<div class="white-bg col-md-5"><h1>Edit Profile</h1>
   <%= form_for(@user, :url => {:controller => 'users', :action => 'update'}) do |f| %>
     <p> Avatar:<br>
     <%= f.file_field :avatar %></p>
@@ -20,8 +20,8 @@
   <%= f.radio_button :public, false %>
   <%= label :public_no, 'Private' %><br>
   <br><br>               
-    <%= f.submit "Edit Profile" %>
-  <% end %>
+    <%= f.submit class: 'btn btn-primary col-md-12' %>
+    <br><br>  <% end %>
   <% if @user.errors.any? %>
     <ul class="Signup_Errors">
     <% for message_error in @user.errors.full_messages %>
@@ -29,4 +29,6 @@
     <% end %>
     </ul>
   <% end %>
+  <br>
+</div>
 </div>

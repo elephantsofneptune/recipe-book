@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Bootstrapping
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'font-awesome-sass'
 # Image uploading through 'carrierwave'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem "mini_magick"

@@ -10,6 +10,27 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "home.scss";
+@import "cookbooks.scss";
+
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
+
+body {
+	background-image: url('http://www.freepptbackgrounds.net/wp-content/uploads/2015/02/Fork-and-Spoon-Powerpoint-Backgrounds-800x600.jpg');
+	height:100%; 
+}
+
+.white-bg { 
+	background-color: #fff;
+	display:table;
+	height:100%;      
+}

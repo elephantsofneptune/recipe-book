@@ -1,13 +1,13 @@
 <%= form_for @cookbook do |f| %>
-<%= f.label :title %><br>
-<%= f.text_field :title %><br><br>
-<%= f.label :description %><br>
-<%= f.text_field :description %><br><br>
-<%= f.label :book_cover %><br>
-    <%= f.file_field :book_cover %></p>
-<%= f.radio_button :public, true, :checked => true %>
-<%= label :public_yes, 'Public' %>      
-<%= f.radio_button :public, false %>
-<%= label :public_no, 'Private' %><br><br>
-<%= f.submit %>
+	<%= f.label :title %><br>
+	<%= f.text_field :title %><br><br>
+	<%= f.label :description %><br>
+	<%= f.text_field :description %><br><br>
+	<%= f.label :book_cover %><br>
+	    <%= f.file_field :book_cover %></p>
+	<%= f.radio_button :public, true, :checked => true %>
+	<%= label :public_yes, 'Public' %>      
+	<%= f.radio_button :public, false %>
+	<%= label :public_no, 'Private' %><br><br>
+	<%= f.submit class: 'btn btn-primary col-md-12' %><br>
 <% end %>

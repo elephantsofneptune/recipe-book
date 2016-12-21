@@ -1,18 +1,58 @@
-This is where all the recipes live
-<h1><%= @cookbook.title %></h1>
-<% @cookbook.recipes.each do |recipe| %>
-Title:<br><%= link_to recipe.title, cookbook_recipe_path(@cookbook, recipe) %><br><br>
-<% end %>
+<% if @cookbook.public == true || current_user == @cookbook.user %>
 
-<% if current_user == @cookbook.user %>
-<%= button_to "Add Recipe", new_cookbook_recipe_path(@cookbook), method: :get %>
-<% else %>
-	<% if @cookbook.subscriptions.find_by(user_id: current_user.id) == nil %>
-		<%= button_to "Subscribe", cookbook_subscriptions_path(@cookbook) %>
+	<div align="center">
+	<h1><%= @cookbook.title %></h1>
+	<p>by <%= @cookbook.user.username %></p>
+	</div>
+	<% if current_user == @cookbook.user %>
+	<%= button_to "Add Recipe", new_cookbook_recipe_path(@cookbook), method: :get, class: "btn btn-primary col-md-12" %>
 	<% else %>
-		<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete %>
+		<% if @cookbook.subscriptions.find_by(user_id: current_user.id) == nil %>
+			<%= button_to "Subscribe", cookbook_subscriptions_path(@cookbook), class: "btn btn-primary btn-block" %>
+		<% else %>
+			<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete, class: "btn btn-danger btn-block btn-custom" %>
+		<% end %><br>
 	<% end %>
+	<% if @cookbook.subscriptions.count > 0 %>
+	<br><u>Subscribers:</u><br> <% @cookbook.subscriptions.all.each do |subscribers| %>
+		<%= image_tag(User.find(subscribers.user_id).avatar.url, :class => "subscriber-resize") %>
+		<% end %>
+	<% end %>
+	<% @cookbook.recipes.each do |recipe| %>
+	<div class="col-md-12 recipe-table">
+		<div class="col-md-3">
+	<%= image_tag(recipe.image.url, :class => "recipe-resize") %>
+	</div>
+	<div class="col-md-9">
+	<h4><%= recipe.title %><% if current_user == @cookbook.user || current_user.the_pretty_admin? %>
+		<% if current_user == @cookbook.user %>	
+		[<%= link_to "Edit", edit_cookbook_recipe_path(recipe.cookbook, recipe) %>]
+		<% end %>
+		&nbsp;[<%= link_to "Delete", cookbook_recipe_path(recipe.cookbook, recipe), method: :delete %>]&nbsp;
+	<% end %></h4><br>
+		<table>
+		<tr><td width="50%">
+	<b>Ingredients:</b>
+		<ol>
+		<% recipe.ingredients.each do |x| %>
+			<li><%= x %></li>
+		<% end %>
+		</ol>
+		</td>
+		<td width="50%">
+	<b>Steps:</b>
+		<ol>
+		<% recipe.steps.each do |y| %>
+			<li><%= y %></li>
+		<% end %>
+		</ol>
+		</td>
+		</tr>
+		</table>
+	</div>
+	</div>
+	<% end %>
+	<br>
+<% else %>
+<div class="notice"><p>Sorry, the user has privated this cookbook.</p></div>
 <% end %>
-Subscribers: <% @cookbook.subscriptions.all.each do |subscribers| %>
-	<%= image_tag(User.find(subscribers.user_id).avatar.url) %>
-	<% end %>

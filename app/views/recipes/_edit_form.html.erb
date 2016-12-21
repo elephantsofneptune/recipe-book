@@ -13,5 +13,5 @@
 <% @recipe.steps.length.times do %>
 <%= f.text_field :steps, multiple: true, value: @recipe.steps[s_num] %><% s_num += 1 %><br>
 <% end %><br>
-<%= f.submit %>
-<% end %>
+<%= f.submit class: "btn btn-primary col-md-12" %><br><br>
+<% end %><br>

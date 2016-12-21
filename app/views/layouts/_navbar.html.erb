@@ -1,0 +1,103 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="nav-side-menu">
+    <div class="brand"><h2>What's Cooking?</h2>
+    <% if !logged_in? %>
+    	<img src="http://image.flaticon.com/icons/png/512/45/45332.png" width="100px" height="100px" style="margin-bottom: 10px; margin-top: 10px">
+    <% else %>
+    	<%= image_tag(current_user.avatar.url, :class => "avatar-resize") %>
+    	<br>Hi <%= current_user.username %>! (<%= link_to "Edit Profile", edit_user_path(current_user) %>)
+    	<div>
+  	  </div>
+
+    <% end %>
+          <%= form_tag(controller: "searches", action: "create", method: "post") do %>
+	  	  <%= text_field_tag(:query, nil, :class => "searchbox") %>
+	  	  <%= submit_tag("Search", :id=>"button", :class=>"btn btn-default", :name=>"submit") %>
+  	  <% end %>
+    </div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a href="#">
+                  <i class="fa fa-dashboard fa-lg"></i>
+                   <% if !logged_in? %>
+                   <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In / Register</a>
+                   <% else %>
+                   	<%= link_to "Sign Out", logout_path, method: :delete %>
+                   <% end %>
+                  </a>
+                </li>
+                <% if logged_in? %>
+                <li  data-toggle="collapse" data-target="#products" class="collapsed">
+                  <a href="#"><i class="fa fa-gift fa-lg"></i> My Cookbooks <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="products">
+                <li><%= link_to "VIEW ALL", cookbooks_path %></li>
+                <% if current_user.cookbooks.length > 0 %>
+                    <% current_user.cookbooks.each do |x| %>
+                    <li><%= link_to x.title, cookbook_path(x) %></li>
+ 					<% end %>
+ 				<% end %>
+                </ul>
+
+
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  <a href="#"><i class="fa fa-globe fa-lg"></i>My Subscriptions<span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service">
+				<% if Subscription.where(user_id: current_user.id).count > 0 %>
+                    <% current_user.subscriptions.each do |x| %>
+                    <li><%= link_to Cookbook.find(x.cookbook_id).title, cookbook_path(x.cookbook_id) %></a></li>
+ 					<% end %>
+ 				<% else %>
+ 				<li>None! Start subscribing one today!</li>
+ 				<% end %>
+                </ul>
+                <% end %>
+            </ul>
+            <div class="intro"><p>Was it 100g or 200g? Cooking is such an intricate task that sometimes we might forgot all the little details that makes the perfect dish.</p><p><strong>What's Cooking</strong> is a platform for users to keep track of their favourite recipes without the fear misplacing it. Start posting, viewing and subscribing to your favourite recipes NOW!</p></div>
+     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <br>
+        <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+              <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+              <li class=""><a href="#why" data-toggle="tab">Why?</a></li>
+            </ul>
+        </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in" id="why">
+        <p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
+        <p></p><br> Please contact <a mailto:href="admin@whatscooking.com"></a>admin@whatscooking.com</a> for any other inquiries.</p>
+        </div>
+        <div class="tab-pane fade active in" id="signin">
+            <form class="form-horizontal">
+            <%= render :partial => 'sessions/form' %>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="signup">
+            <form class="form-horizontal">
+            <%= render :partial => 'users/newform' %>
+            </form>
+      </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+      <center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,95 @@
 // Place all the styles related to the cookbooks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-primary {
+	-webkit-border-radius: 0px; /* Saf3+, Chrome */
+	border-radius: 0px; /* Opera 10.5, IE 9 */
+	/*-moz-border-radius: 0px;  Disabled for FF1+ */
+	border: 0px solid #fff;
+	height: 45px;		
+}
+
+.btn-custom {
+	-webkit-border-radius: 0px; /* Saf3+, Chrome */
+	border-radius: 0px; /* Opera 10.5, IE 9 */
+	/*-moz-border-radius: 0px;  Disabled for FF1+ */
+	border: 0px solid #fff;
+	height: 45px;		
+}
+
+.notice {
+	padding: 15px;
+	text-align: center;
+	background-color: white;
+}
+
+.btn-warning {
+	float: left;
+	-webkit-border-radius: 15px; /* Saf3+, Chrome */
+	border-radius: 15px; /* Opera 10.5, IE 9 */
+	/*-moz-border-radius: 15px;  Disabled for FF1+ */
+	border: 0px solid #fff;
+	height: 45px;
+	width: 45px;
+	margin-left: 10px;		
+}
+
+.btn-danger {
+	float: right;
+	-webkit-border-radius: 15px; /* Saf3+, Chrome */
+	border-radius: 15px; /* Opera 10.5, IE 9 */
+	/*-moz-border-radius: 15px;  Disabled for FF1+ */
+	border: 0px solid #fff;
+	height: 45px;
+	width: 45px;
+	margin-right: 10px;			
+}
+
+.btn-success {
+	float: left;
+	-webkit-border-radius: 15px; /* Saf3+, Chrome */
+	border-radius: 15px; /* Opera 10.5, IE 9 */
+	/*-moz-border-radius: 15px;  Disabled for FF1+ */
+	border: 0px solid #fff;
+	height: 45px;
+	width: 45px;
+	margin-left: 25px;			
+}
+
+.subscriber-resize {
+	width: 45px;
+	height: 45px;
+	-webkit-border-radius: 15px; /* Saf3+, Chrome */
+	border-radius: 15px; /* Opera 10.5, IE 9 */
+	/*-moz-border-radius: 15px;  Disabled for FF1+ */
+	
+}
+
+
+.bookcover-resize {
+	width: 175px;
+	height: 225px;
+}
+
+.recipe-table {
+	padding: 15px;
+	margin-top: 10px;
+	background-color: #fff;
+}
+
+.recipe-resize {
+	margin-top: 8px;
+	width: 200px;
+	height: 200px;
+}
+
+.ind-book {
+	margin-top: 10px;
+	padding: 5px 5px 5px 5px;
+	background-color: #fff;
+	height: 400px;
+	-webkit-border-radius: 15px; /* Saf3+, Chrome */
+	border-radius: 15px; /* Opera 10.5, IE 9 */
+	/*-moz-border-radius: 15px;  Disabled for FF1+ */	
+}

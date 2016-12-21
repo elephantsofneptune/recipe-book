@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
   	params.permit!
   	@recipe = Recipe.find(params[:id])
   	@recipe.update(params[:recipe])
-  	redirect_to cookbook_recipe_path(@recipe.cookbook, @recipe)
+  	redirect_to cookbook_path(@recipe.cookbook)
   end
 
   def show

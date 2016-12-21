@@ -1,0 +1,19 @@
+<div align="center">
+
+<% if flash[:danger] != nil %>
+<%= flash[:danger] %><br><br>
+<% flash[:danger] = nil %>
+<% end %>
+<%= form_for(:session, url: login_path) do |f| %>
+Username / E-mail :<br>
+<%= f.text_field :username_email %><br><br>
+Password :<br>
+<%= f.password_field :password %><br><br>
+<%= f.submit :value => "Log In", class:"btn btn-primary col-md-12" %><br><br><br>
+<% end %>
+
+<a href="/auth/google_oauth2"><img src="https://cdn0.iconfinder.com/data/icons/social-circle/512/google-512.png" width="30px" height="30px"></a>&nbsp;&nbsp;&nbsp;
+<a href="/auth/facebook"><img src="https://cdn3.iconfinder.com/data/icons/social-circle/512/social_3-512.png" width="32px" height="32px"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="/auth/twitter"><img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/twitter_circle_color-256.png" width="36px" height="36px"></a>
+</div>
