@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221121057) do
+ActiveRecord::Schema.define(version: 20161221123320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20161221121057) do
     t.string   "title"
     t.text     "description"
     t.boolean  "public"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                                                                null: false
+    t.datetime "updated_at",                                                                                null: false
+    t.string   "book_cover",  default: "http://www.librarything.com/wiki/images/3/34/Book-cover-black.jpg"
     t.index ["user_id"], name: "index_cookbooks_on_user_id", using: :btree
   end
 
@@ -64,14 +65,14 @@ ActiveRecord::Schema.define(version: 20161221121057) do
     t.text     "description"
     t.string   "type_of_cook"
     t.boolean  "public"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                                                                                                 null: false
+    t.datetime "updated_at",                                                                                                                 null: false
     t.integer  "access_level",          default: 0
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.string   "avatar"
+    t.string   "avatar",                default: "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-46-512.png"
   end
 
   add_foreign_key "cookbooks", "users"

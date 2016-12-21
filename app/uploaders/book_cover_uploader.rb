@@ -1,4 +1,4 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class BookCoverUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -21,7 +21,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
   def default_url
     "/assets/fallback/" + [version_name, "default.png"].compact.join('_')
   end
@@ -35,7 +34,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [50, 50]
+    process resize_to_fit: [250, 250]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
