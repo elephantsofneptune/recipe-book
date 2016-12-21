@@ -1,4 +1,3 @@
-This is where all the recipes live
 <h1><%= @cookbook.title %></h1>
 <% @cookbook.recipes.each do |recipe| %>
 Title:<br><%= link_to recipe.title, cookbook_recipe_path(@cookbook, recipe) %><br><br>

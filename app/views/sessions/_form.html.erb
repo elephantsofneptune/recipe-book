@@ -1,0 +1,15 @@
+<% if flash[:danger] != nil %>
+<%= flash[:danger] %><br><br>
+<% flash[:danger] = nil %>
+<% end %>
+<%= form_for(:session, url: login_path) do |f| %>
+Username/E-mail :<br>
+<%= f.text_field :username_email %><br>
+<%= f.label :password %> :<br>
+<%= f.password_field :password %><br>
+<%= f.submit "Log In" %>
+<% end %>
+
+<%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %><br>
+<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %><br>
+<%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>

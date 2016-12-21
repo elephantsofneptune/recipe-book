@@ -1,23 +1,22 @@
-<h1>Cookbooks#index</h1>
-<p>Find me in app/views/cookbooks/index.html.erb</p>
+<h1 align="center">List of Cookbooks</h1>
 <% if !current_user.the_pretty_admin? %>
-<%= button_to "Create Cookbook", new_cookbook_path, method: :get %>
+<%= button_to "Create Cookbook", new_cookbook_path, method: :get, class: "btn btn-primary col-md-12" %>
 <% end %>
 <% @cookbooks.all.each do |book| %>
-<%= link_to book.title, cookbook_path(book) %><br><%= image_tag(book.book_cover.url(:thumb)) %><br>
-<%= book.description %><br>
-<% if book.public == true %>
-Public
-<% else %>
-Private
-<% end %><br>
-<% if current_user == book.user || current_user.the_pretty_admin? %>
-	<% if current_user == book.user %>	
-	<%= button_to "Edit", edit_cookbook_path(book), method: :get %>
-	<% end %>
-	<%= button_to "Delete", cookbook_path(book), method: :delete %><br><br>
-<% elsif current_user != book.user %>
-	<%= button_to "Subscribe", cookbook_subscriptions_path(book) %>
+	<div class="col-md-3" align="center">
+		<div class="ind-book"><br>
+			<%= image_tag(book.book_cover.url, :class => "bookcover-resize") %><br>
+			<h3><%= link_to book.title, cookbook_path(book) %></h3>
+			<%= book.description %><br><br>
+		<% if current_user == book.user || current_user.the_pretty_admin? %>
+			<% if current_user == book.user %>	
+			<%= button_to "Edit", edit_cookbook_path(book), method: :get, class: 'btn btn-warning' %>
+			<% end %>
+			<%= button_to "Del", cookbook_path(book), method: :delete, class: 'btn btn-danger' %>
+			<%= button_to "See", cookbook_path(book), method: :get, class: 'btn btn-success' %>
+		<% end %>
+		</div>
+	</div>
 <% end %>
-<% end %>
+
 
