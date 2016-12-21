@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :cookbooks do
     resources :recipes, except: [:index]
   end
+  resources :users, only: [:new, :create, :edit, :update]
   resources :searches, only: [:create, :show]
 
   get 'auth/:provider/callback', to: 'sessions#create'

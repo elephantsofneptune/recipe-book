@@ -1,11 +1,1 @@
-<% if logged_in? %>
-<%= link_to "Sign Out", logout_path, method: :delete %>
-<%= current_user.username %>
-<% else %>
-<%= link_to "Sign Up", signup_path %>
-<%= link_to "Sign In", login_path %>
-<%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-<%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
-<% end %>
 <br>

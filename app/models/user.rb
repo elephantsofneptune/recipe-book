@@ -3,10 +3,11 @@ class User < ApplicationRecord
   has_many :cookbooks
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates :email, :presence => true, :uniqueness => true
-
+  mount_uploader :avatar, AvatarUploader
   enum access_level: [:cookbookers, :the_pretty_admin]
 
 def self.from_omniauth(auth)
+  if auth.try(:provider)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -21,6 +22,7 @@ def self.from_omniauth(auth)
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
   end  
 
 end

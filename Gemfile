@@ -5,11 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Image uploading through 'carrierwave'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 # Social log-in gems
 gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-
 # Use Figaro for key and secret protection
 gem 'figaro'
 # Use PgSearch for dynamic searching

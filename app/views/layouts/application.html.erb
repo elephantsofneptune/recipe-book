@@ -14,6 +14,19 @@
   	  <%= text_field_tag(:query) %>
   	  <%= submit_tag("Search") %>
   	  <% end %>
+      <br>
+      <% if logged_in? %>
+      <%= image_tag(current_user.avatar.url) %><br>
+      <%= link_to "Edit Profile", edit_user_path(current_user) %>
+<%= link_to "Sign Out", logout_path, method: :delete %>
+<%= current_user.username %>
+<% else %>
+<%= link_to "Sign Up", signup_path %>
+<%= link_to "Sign In", login_path %>
+<%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+<%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
+<% end %><br>
     <%= yield %>
   </body>
 </html>
