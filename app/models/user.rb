@@ -25,6 +25,14 @@ def self.from_omniauth(auth)
       user.save!
     end
   end
-  end  
+  end 
+
+  def full_name
+    if self.first_name != nil && self.last_name != nil
+      return "#{self.first_name.titleize + self.last_name.titleize}"
+    else
+      return "N/A"
+    end
+  end 
 
 end

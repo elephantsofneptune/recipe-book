@@ -29,7 +29,11 @@ class UsersController < ApplicationController
     params.permit!
     @user = User.find(params[:id])
     @user.update(params[:user])
-    redirect_to cookbooks_path
+    redirect_to user_path(@user)
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
 end

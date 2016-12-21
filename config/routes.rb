@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :recipes, except: [:index]
     resources :subscriptions, only: [:create, :destroy]
   end
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :edit, :update, :show]
   resources :searches, only: [:create, :show]
 
   get 'auth/:provider/callback', to: 'sessions#create'
