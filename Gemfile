@@ -13,6 +13,7 @@ gem 'font-awesome-sass'
 # Image uploading through 'carrierwave'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem "mini_magick"
+gem 'carrierwave-aws'
 # Social log-in gems
 gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
