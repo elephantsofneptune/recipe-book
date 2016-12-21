@@ -6,4 +6,13 @@ Title:<br><%= link_to recipe.title, cookbook_recipe_path(@cookbook, recipe) %><b
 
 <% if current_user == @cookbook.user %>
 <%= button_to "Add Recipe", new_cookbook_recipe_path(@cookbook), method: :get %>
+<% else %>
+	<% if @cookbook.subscriptions.find_by(user_id: current_user.id) == nil %>
+		<%= button_to "Subscribe", cookbook_subscriptions_path(@cookbook) %>
+	<% else %>
+		<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete %>
+	<% end %>
 <% end %>
+Subscribers: <% @cookbook.subscriptions.all.each do |subscribers| %>
+	<%= image_tag(User.find(subscribers.user_id).avatar.url) %>
+	<% end %>
