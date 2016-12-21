@@ -3,8 +3,8 @@ class Recipe < ApplicationRecord
   multisearchable :against => [:title, :ingredients, :steps]
   belongs_to :cookbook
   mount_uploader :image, ImageUploader  
-  scope :public_entry, -> { joins(:cookbook).where(cookbooks: {public: true} ) }  
-
+  scope :public_entry, -> { joins(:cookbook).where(cookbooks: {public: true} ) } 
+  self.per_page = 3
   def public?
   	byebug
   	self.cookbook.public == true

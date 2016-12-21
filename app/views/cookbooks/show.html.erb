@@ -4,6 +4,7 @@
 	<h1><%= @cookbook.title %></h1>
 	<p>by <%= link_to @cookbook.user.username, user_path(@cookbook.user) %></p>
 	</div>
+	<h4 align="center"><%= will_paginate @recipes %></h4>
 	<% if current_user == @cookbook.user %>
 	<%= button_to "Add Recipe", new_cookbook_recipe_path(@cookbook), method: :get, class: "btn btn-primary col-md-12" %>
 	<% else %>
@@ -14,11 +15,20 @@
 		<% end %><br>
 	<% end %>
 	<% if @cookbook.subscriptions.count > 0 %>
+	<% num = 0 %>
 	<br><u>Subscribers:</u><br> <% @cookbook.subscriptions.all.each do |subscribers| %>
+
 		<a href="/users/<%= subscribers.user_id %>"><%= image_tag(User.find(subscribers.user_id).avatar.url, :class => "subscriber-resize") %></a>
+
+		<%= image_tag(User.find(subscribers.user_id).avatar.url, :class => "subscriber-resize") %>&nbsp;
+		<% num += 1 %>
+		<% if num >= 1 %>
+		<b>+</b>
+		<break>
 		<% end %>
-	<% end %>
-	<% @cookbook.recipes.each do |recipe| %>
+		<% end %>
+	<% end %><br>
+	<% @recipes.each do |recipe| %>
 	<div class="col-md-12 recipe-table">
 		<div class="col-md-3">
 	<%= image_tag(recipe.image.url, :class => "recipe-resize") %>
