@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :cookbooks do
     resources :recipes, except: [:index]
   end
+  resources :searches, only: [:create, :show]
 
   get    '/signup',  to: 'users#new'
   post	 '/signup',	 to: 'users#create'

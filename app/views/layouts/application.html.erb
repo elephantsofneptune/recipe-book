@@ -9,6 +9,11 @@
   </head>
 
   <body>
+  	<%= form_tag(controller: "searches", action: "create", method: "post") do %>
+  	  <%= label_tag(:query, "Search for:") %>
+  	  <%= text_field_tag(:query) %>
+  	  <%= submit_tag("Search") %>
+  	  <% end %>
     <%= yield %>
   </body>
 </html>
