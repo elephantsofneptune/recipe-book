@@ -12,7 +12,11 @@ def self.from_omniauth(auth)
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = SecureRandom.urlsafe_base64
-      user.username = auth.info.email[/[^@]+/]
+      if auth.info.email != nil
+        user.username = auth.info.email[/[^@]+/]
+      else
+        user.username = auth.info.nickname
+      end
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
