@@ -30,6 +30,10 @@ class RecipesController < ApplicationController
 
   def destroy
   	Recipe.find(params[:id]).destroy
-  	redirect_to cookbook_path(params[:cookbook_id])  	
+  respond_to do |format|
+    format.html { redirect_to root_path }
+    format.js { }
+  end
+
   end
 end

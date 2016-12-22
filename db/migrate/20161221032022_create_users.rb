@@ -8,9 +8,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :first_name
       t.string :last_name
       t.date :date_of_birth
-      t.text :description
-      t.string :type
-      t.boolean :public
+      t.text :description, default: "N/A"
+      t.string :type, default: "N/A"
+      t.boolean :public, default: true
 
       t.timestamps
     end

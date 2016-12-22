@@ -5,7 +5,9 @@
     <% if !logged_in? %>
     	<img src="http://image.flaticon.com/icons/png/512/45/45332.png" width="100px" height="100px" style="margin-bottom: 10px; margin-top: 10px">
     <% else %>
-    	<%= image_tag(current_user.avatar.url, :class => "avatar-resize") %>
+    	<% if current_user.avatar.to_s.length < 20 %>
+      <img src=""http://www.librarything.com/wiki/images/3/34/Book-cover-black.jpg" class="avatar-resize">
+      <%else%><%= image_tag(current_user.avatar.url, :class => "avatar-resize") %><% end %>
     	<br>Hi <%= current_user.username %>! (<%= link_to "Edit Profile", edit_user_path(current_user) %>)
     	<div>
   	  </div>
@@ -25,7 +27,7 @@
                   <a href="#">
                   <i class="fa fa-dashboard fa-lg"></i>
                    <% if !logged_in? %>
-                   <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In / Register</a>
+                   <%= link_to "Sign In", login_path %> / <%= link_to "Register", signup_path %></a>
                    <% else %>
                    	<%= link_to "Sign Out", logout_path, method: :delete %>
                    <% end %>
@@ -71,7 +73,6 @@
         <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
-              <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
               <li class=""><a href="#why" data-toggle="tab">Why?</a></li>
             </ul>
         </div>
@@ -84,13 +85,9 @@
         <div class="tab-pane fade active in" id="signin">
             <form class="form-horizontal">
             <%= render :partial => 'sessions/form' %>
+            <%= link_to "Sign Up", signup_path %>
             </form>
         </div>
-        <div class="tab-pane fade" id="signup">
-            <form class="form-horizontal">
-            <%= render :partial => 'users/newform' %>
-            </form>
-      </div>
     </div>
       </div>
       <div class="modal-footer">

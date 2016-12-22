@@ -28,10 +28,18 @@ def self.from_omniauth(auth)
   end 
 
   def full_name
-    if self.first_name != nil && self.last_name != nil
-      return "#{self.first_name.titleize + self.last_name.titleize}"
+    if !self.first_name.blank? && !self.last_name.blank?
+      return "#{self.first_name.titleize} #{self.last_name.titleize}"
     else
       return "N/A"
+    end
+  end
+
+  def type_of_cooking
+    if self.type_of_cook.blank?
+      return "N/A"
+    else
+      return self.type_of_cook
     end
   end 
 

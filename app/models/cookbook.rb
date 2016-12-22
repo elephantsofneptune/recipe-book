@@ -2,6 +2,7 @@ class Cookbook < ApplicationRecord
   include PgSearch
   multisearchable :against => [:title, :description]
   belongs_to :user
+  validates :title, :presence => true
   has_many :recipes
   has_many :subscriptions
   mount_uploader :book_cover, BookCoverUploader  

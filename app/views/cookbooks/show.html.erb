@@ -28,8 +28,10 @@
 		<% end %>
 		<% end %>
 	<% end %><br>
+	<% @num = 0 %>
+	<ul>
 	<% @recipes.each do |recipe| %>
-	<div class="col-md-12 recipe-table">
+	<li id="<%= recipe.id %>"><div class="col-md-12 recipe-table">
 		<div class="col-md-3">
 	<%= image_tag(recipe.image.url, :class => "recipe-resize") %>
 	</div>
@@ -38,7 +40,7 @@
 		<% if current_user == @cookbook.user %>	
 		[<%= link_to "Edit", edit_cookbook_recipe_path(recipe.cookbook, recipe) %>]
 		<% end %>
-		&nbsp;[<%= link_to "Delete", cookbook_recipe_path(recipe.cookbook, recipe), method: :delete %>]&nbsp;
+		&nbsp;[<%= link_to "Delete", cookbook_recipe_path(recipe.cookbook, recipe), method: :delete, remote: true, :class => 'delete_recipe' %>]&nbsp;
 	<% end %></h4><br>
 		<table>
 		<tr><td width="50%">
@@ -60,8 +62,9 @@
 		</tr>
 		</table>
 	</div>
-	</div>
+	</div></li>
 	<% end %>
+	</ul>
 	<br>
 <% else %>
 <div class="notice"><p>Sorry, the user has privated this cookbook.</p></div>

@@ -37,6 +37,10 @@ class CookbooksController < ApplicationController
 
   def destroy
   	Cookbook.find(params[:id]).destroy
-  	redirect_to cookbooks_path
+    respond_to do |format|
+      format.html { redirect_to cookbooks_path }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
   end
 end

@@ -3,10 +3,10 @@
 <div class="white-bg col-md-5"><div align="center">
 <h1><%= @user.username %>'s Profile</h1>
     <%= image_tag(current_user.avatar.url, :class => "avatar-resize") %></p>
-    <p> <b>Full Name:</b><%= @user.full_name %></p> 
-    <p> <b>Age:</b> Age here</p>
+    <p> <b>Full Name:</b> <%= @user.full_name %></p> 
+    <p> <b>DOB:</b><% if !@user.date_of_birth.nil? %><%= @user.date_of_birth %><% end %></p>
     <p> <b>Description:</b></br> <%= @user.description %></p>
-    <p> <b>Type:</b> <% @user.type_of_cook %></br></p>
+    <p> <b>Type:</b> <%= @user.type_of_cooking.capitalize %></br></p>
         <p> <b>Cookbooks:</b></p>
         <% if @user.cookbooks.count < 1 %>
         <p>This user has yet to create a cookbook.</p>

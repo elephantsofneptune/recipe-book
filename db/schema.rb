@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20161221125944) do
   create_table "cookbooks", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "description"
-    t.boolean  "public"
+    t.text     "description", default: "N/A"
+    t.boolean  "public",      default: true
     t.datetime "created_at",                                                                                null: false
     t.datetime "updated_at",                                                                                null: false
     t.string   "book_cover",  default: "http://www.librarything.com/wiki/images/3/34/Book-cover-black.jpg"
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(version: 20161221125944) do
     t.string   "first_name"
     t.string   "last_name"
     t.date     "date_of_birth"
-    t.text     "description"
-    t.string   "type_of_cook"
-    t.boolean  "public"
+    t.text     "description",           default: "N/A"
+    t.string   "type_of_cook",          default: "N/A"
+    t.boolean  "public",                default: true
     t.datetime "created_at",                                                                                                                 null: false
     t.datetime "updated_at",                                                                                                                 null: false
     t.integer  "access_level",          default: 0
