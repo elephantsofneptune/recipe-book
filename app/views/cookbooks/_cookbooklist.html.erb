@@ -1,7 +1,11 @@
 <% @cookbooks.each do |book| %>
 	<div class="col-md-3" align="center">
 		<div class="ind-book"><br>
-			<%= image_tag(book.book_cover.url, :class => "bookcover-resize") %><br>
+			<% if book.book_cover.blank? %>
+				<img src="http://i64.tinypic.com/qxmqfn.jpg" class="bookcover-resize">
+			<% else %>
+				<%= image_tag(book.book_cover.url, :class => "bookcover-resize") %>
+			<% end %><br>
 			<h3><%= link_to book.title, cookbook_path(book) %></h3>
 			<%= book.description %><br><br>
 			<% if logged_in? %>
@@ -14,5 +18,6 @@
 				<% end %>
 			<% end %>
 		</div>
+		<br><br>
 	</div>
 <% end %>

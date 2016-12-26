@@ -8,8 +8,8 @@
     <% if !logged_in? %>
       <img src="http://image.flaticon.com/icons/png/512/45/45332.png" width="100px" height="100px" style="margin-bottom: 10px; margin-top: 10px">
     <% else %>
-      <% if current_user.avatar.to_s.length < 20 %>
-        <img src=""http://www.librarything.com/wiki/images/3/34/Book-cover-black.jpg" class="avatar-resize">
+      <% if current_user.avatar.blank? %>
+        <img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="avatar-resize">
       <%else%>
         <%= image_tag(current_user.avatar.url, :class => "avatar-resize") %>
       <% end %>

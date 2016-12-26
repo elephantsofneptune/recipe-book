@@ -2,7 +2,7 @@ class CookbooksController < ApplicationController
 
   def index
     if current_user.the_admin?
-      @cookbooks = Cookbook.all
+      @cookbooks = Cookbook.all.page(params[:page]).order('created_at DESC')
     else
   	 @cookbooks = Cookbook.where(user_id: current_user.id).page(params[:page]).order('created_at DESC')
     end

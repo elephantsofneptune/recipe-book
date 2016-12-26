@@ -1,7 +1,11 @@
 <% @recipes.each do |recipe| %>
 	<div class="col-md-12 recipe-table">
 		<div class="col-md-3">
-			<%= image_tag(recipe.image.url, :class => "recipe-resize") %>
+			<% if recipe.image.blank? %>
+				<img src="http://image.flaticon.com/icons/png/512/45/45332.png" class="recipe-resize">
+			<% else %>
+				<%= image_tag(recipe.image.url, :class => "recipe-resize") %>
+			<% end %>
 		</div>
 		<div class="col-md-9">
 			<h4><%= recipe.title %>
@@ -10,7 +14,7 @@
 						<% if current_user == recipe.cookbook.user %>	
 							[<%= link_to "Edit", edit_cookbook_recipe_path(recipe.cookbook, recipe) %>]&nbsp;
 						<% end %>
-					[<%= link_to "Delete", cookbook_recipe_path(recipe.cookbook, recipe), method: :delete, remote: true, :class => 'delete_recipe' %>]&nbsp;
+					[<%= link_to "Delete", cookbook_recipe_path(recipe.cookbook, recipe), method: :delete %>]&nbsp;
 					<% end %>
 				<% end %>
 				[<%= link_to "View Cookbook", cookbook_path(recipe.cookbook) %>]
