@@ -8,7 +8,11 @@
             <table>
                 <tr>
                     <td colspan="3" class="profile-key" align="center">
-                        <%= image_tag(@user.avatar.url, :class => "avatar-resize") %>
+                        <% if current_user.avatar.blank? %>
+                            <img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="avatar-resize">
+                        <%else%>
+                            <%= image_tag(current_user.avatar.url, :class => "avatar-resize") %>
+                        <% end %>
                     </td>
                 </tr>
                 <tr>
