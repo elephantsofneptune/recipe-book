@@ -11,11 +11,11 @@
 }
 
 .btn-custom {
-	-webkit-border-radius: 0px; /* Saf3+, Chrome */
-	border-radius: 0px; /* Opera 10.5, IE 9 */
-	/*-moz-border-radius: 0px;  Disabled for FF1+ */
-	border: 0px solid #fff;
-	height: 45px;		
+	background-color: #ce0c36;	
+}
+
+.btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active, {
+	background-color: #b71243;
 }
 
 .notice {
