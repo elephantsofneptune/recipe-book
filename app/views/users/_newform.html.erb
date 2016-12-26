@@ -1,18 +1,13 @@
-  <% @user = User.new %>
-  <div align="center">
-
-  <% form_for @user do |f| %>
-    <p> Username:</br> <%= f.text_field :username %> </p>
-    <p> Email:</br> <%= f.text_field :email%> </p>
-    <p> Password:</br> <%= f.password_field :password %></p>
-    <p> Password Confirmation:</br> <%= f.password_field :password_confirmation %> </p>               
-    <%= f.submit :value => "Sign Up", class:"btn btn-primary col-md-12" %><br><br>
-  <% end %>
-  <% if @user.errors.any? %>
-    <ul class="Signup_Errors">
-    <% for message_error in @user.errors.full_messages %>
-      <li>* <%= message_error %></li>
+<div align="center">
+    <%= form_for @user do |f| %>
+        <%= f.label :email %> :
+        <%= f.text_field :email %><br><br>
+        <%= f.label :username %> :
+        <%= f.text_field :username %><br><br>
+        <%= f.label :password %> :
+        <%= f.password_field :password %><br><br>
+        <%= f.label :password_confirmation %> :
+        <%= f.password_field :password_confirmation %><br><br>
+        <%= f.submit :value => "Sign Up", class:"btn btn-primary col-md-12" %>
     <% end %>
-    </ul>
-  <% end %>
-  </div>
+</div>

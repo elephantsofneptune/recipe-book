@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates :email, :presence => true, :uniqueness => true
   mount_uploader :avatar, AvatarUploader
-  enum access_level: [:cookbookers, :the_pretty_admin]
+  enum access_level: [:cookbookers, :the_admin]
 
 def self.from_omniauth(auth)
   if auth.try(:provider)

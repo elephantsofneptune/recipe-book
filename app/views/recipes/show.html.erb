@@ -14,7 +14,7 @@ Steps:
 		<li><%= y %></li>
 	<% end %>
 	</ol>
-<% if current_user == @cookbook.user || current_user.the_pretty_admin? %>
+<% if current_user == @cookbook.user || current_user.the_admin? %>
 	<% if current_user == @cookbook.user %>	
 	<%= link_to "Edit", edit_cookbook_recipe_path(@recipe.cookbook, @recipe) %>&nbsp;
 	<% end %>

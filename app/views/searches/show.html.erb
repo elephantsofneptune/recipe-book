@@ -7,7 +7,7 @@
 			<%= image_tag(book.book_cover.url, :class => "bookcover-resize") %><br>
 			<h3><%= link_to book.title, cookbook_path(book) %></h3>
 			<%= book.description %><br><br>
-		<% if current_user == book.user || current_user.the_pretty_admin? %>
+		<% if current_user == book.user || current_user.the_admin? %>
 			<% if current_user == book.user %>	
 			<%= button_to "Edit", edit_cookbook_path(book), method: :get, class: 'btn btn-warning' %>
 			<% end %>
@@ -27,7 +27,7 @@
 <%= image_tag(recipe.image.url, :class => "recipe-resize") %>
 </div>
 <div class="col-md-9">
-<h4><%= recipe.title %><% if current_user == recipe.cookbook.user || current_user.the_pretty_admin? %>
+<h4><%= recipe.title %><% if current_user == recipe.cookbook.user || current_user.the_admin? %>
 	<% if current_user == recipe.cookbook.user %>	
 	[<%= link_to "Edit", edit_cookbook_recipe_path(recipe.cookbook, recipe) %>]
 	<% end %>

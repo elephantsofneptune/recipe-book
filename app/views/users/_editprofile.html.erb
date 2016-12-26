@@ -1,0 +1,29 @@
+<%= form_for(@user, :url => {:controller => 'users', :action => 'update'}) do |f| %>
+    <p> Avatar:<br>
+    <%= f.file_field :avatar %></p>
+    <p> First Name:</br> 
+    <%= f.text_field :first_name %></p> 
+    <p> Last Name:</br> 
+    <%= f.text_field :last_name %></p>
+    <p> Date of Birth:</br> 
+    <%= f.date_field :date_of_birth %></p>
+    <p> Description:</br> 
+    <%= f.text_field :description %></p>
+    <p> Type:</br></p>
+		<%= f.radio_button :type_of_cook, 'homecooker', :checked => true %> 
+		<%= label :type_of_cook_homecooker, 'Home-Cooker' %>
+		<%= f.radio_button :type_of_cook, 'chef' %>
+		<%= label :type_of_cook_chef, 'Chef' %>
+		<%= f.radio_button :type_of_cook, 'hobbyist' %>
+		<%= label :type_of_cook_hobbyist, 'Hobbyist' %>      
+		<%= f.radio_button :type_of_cook, 'others' %>
+		<%= label :type_of_cook_others, 'Others' %><br>
+  	<p> Profile:</br></p>
+    	<%= f.radio_button :public, true, :checked => true %>
+  		<%= label :public_yes, 'Public' %>      
+  		<%= f.radio_button :public, false %>
+  		<%= label :public_no, 'Private' %><br>
+  		<br>               
+    <%= f.submit class: 'btn btn-primary col-md-12' %>
+    <br><br>
+<% end %><br>

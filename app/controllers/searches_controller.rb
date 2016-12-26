@@ -1,7 +1,11 @@
 class SearchesController < ApplicationController
   def create
   	params.permit!
-  	@search = Search.create(user_id: current_user.id)
+    if logged_in?
+  	  @search = Search.create(user_id: current_user.id)
+    else
+      @search = Search.create(user_id: 1)
+    end
   	@search.update(query: params[:query])
   	redirect_to search_path(@search, query: params[:query])
   end

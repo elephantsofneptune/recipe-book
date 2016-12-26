@@ -1,25 +1,93 @@
-<% if @user.public == true || current_user == @user %>
+<% @title="WC? | #{@user.username}'s Profile" %>
 
-<div class="white-bg col-md-5"><div align="center">
-<h1><%= @user.username %>'s Profile</h1>
-    <%= image_tag(current_user.avatar.url, :class => "avatar-resize") %></p>
-    <p> <b>Full Name:</b> <%= @user.full_name %></p> 
-    <p> <b>DOB:</b><% if !@user.date_of_birth.nil? %><%= @user.date_of_birth %><% end %></p>
-    <p> <b>Description:</b></br> <%= @user.description %></p>
-    <p> <b>Type:</b> <%= @user.type_of_cooking.capitalize %></br></p>
-        <p> <b>Cookbooks:</b></p>
-        <% if @user.cookbooks.count < 1 %>
-        <p>This user has yet to create a cookbook.</p>
-        <% else %>
-        <ul>
-        <% @user.cookbooks.all.each do |x| %>
-        <li><%= link_to x.title, cookbook_path(x) %></li>
-        <% end %></ul>
-        <% end %>
-  <br>
-  </div>
-</div>
+    <% if @user.public == true || current_user == @user %>
+
+    <div class="white-bg col-md-5">
+        <div align="center">
+            <h1><%= @user.username %>'s Profile</h1>
+            <table>
+                <tr>
+                    <td colspan="3" class="profile-key" align="center">
+                        <%= image_tag(current_user.avatar.url, :class => "avatar-resize") %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="profile-key">
+                        <p><b>Full Name</b></p>
+                    </td>
+                    <td class="profile-delimeter">
+                        <b>:</b>
+                    </td> 
+                    <td class="profile-value">
+                        <p><%= @user.full_name %></p> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="profile-key">
+                        <p><b>DOB</b></p>
+                    </td>
+                    <td class="profile-delimeter">
+                        <b>:</b>
+                    </td>                     
+                    <td class="profile-value">
+                        <p>
+                        <% if !@user.date_of_birth.nil? %>
+                            <%= @user.date_of_birth %>
+                        <% else %>
+                            N/A
+                        <% end %>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="profile-key">
+                        <p><b>Description</b></p>
+                    </td>
+                    <td class="profile-delimeter">
+                        <b>:</b>
+                    </td>
+                    <td class="profile-value"> 
+                        <p><%= @user.description %></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="profile-key">
+                        <p><b>Type</b></p>
+                    </td>
+                    <td class="profile-delimeter">
+                        <b>:</b>
+                    </td>
+                    <td class="profile-value">
+                        <p><%= @user.type_of_cooking.upcase %></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="profile-key">
+                        <p><b>Cookbooks</b></p>
+                    </td>
+                    <td class="profile-delimeter">
+                        <b>:</b>
+                    </td>
+                    <td class="profile-key">
+                        <% if @user.cookbooks.count < 1 %>
+                            <p>This user has yet to create a cookbook.</p>
+                        <% else %>
+                            <ul>
+                                <% @user.cookbooks.all.each do |x| %>
+                                    <li>
+                                        <%= link_to x.title, cookbook_path(x) %>
+                                    </li>
+                                <% end %>
+                            </ul>
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
 <% else %>
-<div class="notice"><p>Sorry, the user has privated their profile.</p></div>
+    <div class="notice">
+        <p>Sorry, the user has privated their profile.</p>
+    </div>
 <% end %>
