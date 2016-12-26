@@ -12,7 +12,11 @@ def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.email = auth.info.email
+      if auth.info.email.blank?
+        user.email = "#{auth.info.nickname}@twitter.com"
+      else
+        user.email = auth.info.email
+      end
       user.remote_avatar_url = auth.info.image.gsub('http://','https://')
       user.password = SecureRandom.urlsafe_base64
       if auth.info.email != nil
