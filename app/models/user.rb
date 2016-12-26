@@ -22,7 +22,7 @@ def self.from_omniauth(auth)
       user.remote_avatar_url = auth.info.image.gsub('http://','https://')
       user.password = SecureRandom.urlsafe_base64
       user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at.to_i)
       user.save!
     end
   end
