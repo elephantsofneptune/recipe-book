@@ -1,0 +1,41 @@
+<% @recipes.each do |recipe| %>
+	<div class="col-md-12 recipe-table">
+		<div class="col-md-3">
+			<%= image_tag(recipe.image.url, :class => "recipe-resize") %>
+		</div>
+		<div class="col-md-9">
+			<h4><%= recipe.title %>
+				<% if logged_in? %>
+					<% if current_user == recipe.cookbook.user || current_user.the_admin? %>
+						<% if current_user == recipe.cookbook.user %>	
+							[<%= link_to "Edit", edit_cookbook_recipe_path(recipe.cookbook, recipe) %>]&nbsp;
+						<% end %>
+					[<%= link_to "Delete", cookbook_recipe_path(recipe.cookbook, recipe), method: :delete, remote: true, :class => 'delete_recipe' %>]&nbsp;
+					<% end %>
+				<% end %>
+				[<%= link_to "View Cookbook", cookbook_path(recipe.cookbook) %>]
+			</h4><br>
+
+			<table>
+				<tr>
+					<td width="50%">
+						<b>Ingredients:</b>
+						<ol>
+							<% recipe.ingredients.each do |x| %>
+								<li><%= x %></li>
+							<% end %>
+						</ol>
+					</td>
+					<td width="50%">
+						<b>Steps:</b>
+						<ol>
+							<% recipe.steps.each do |y| %>
+								<li><%= y %></li>
+							<% end %>
+						</ol>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<% end %>

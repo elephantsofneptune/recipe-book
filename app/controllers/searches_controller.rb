@@ -13,6 +13,7 @@ class SearchesController < ApplicationController
   def show
     @cookbooks = []
     @recipes = []
+    @search = params[:query]
   	@searches = PgSearch.multisearch(params[:query])
     @searches.each do |x|
       case x.searchable_type

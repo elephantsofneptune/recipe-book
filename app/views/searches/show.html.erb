@@ -1,64 +1,41 @@
+<% @title="WC? | Search Results [#{@search}]" %>
+
 <h1 align="center">Search Results</h1>
+
+<!-- Cookbooks Search Results -->
 <% if @cookbooks.length > 0 %>
-<h3 class="col-md-12" style="background: white; padding:5px; text-align:center">Cookbooks</h3>
-<% @cookbooks.each do |book| %>
-	<div class="col-md-3" align="center">
-		<div class="ind-book"><br>
-			<%= image_tag(book.book_cover.url, :class => "bookcover-resize") %><br>
-			<h3><%= link_to book.title, cookbook_path(book) %></h3>
-			<%= book.description %><br><br>
-		<% if current_user == book.user || current_user.the_admin? %>
-			<% if current_user == book.user %>	
-			<%= button_to "Edit", edit_cookbook_path(book), method: :get, class: 'btn btn-warning' %>
-			<% end %>
-			<%= button_to "Del", cookbook_path(book), method: :delete, class: 'btn btn-danger' %>
-			<%= button_to "See", cookbook_path(book), method: :get, class: 'btn btn-success' %>
-		<% end %>
+	<h3 class="col-md-12" style="background: white; padding:5px; text-align:center">Cookbooks</h3>
+	<% @cookbooks.each do |book| %>
+		<div class="col-md-3" align="center">
+			<div class="ind-book"><br>
+				<%= image_tag(book.book_cover.url, :class => "bookcover-resize") %><br>
+				<h3><%= link_to book.title, cookbook_path(book) %></h3>
+				<%= book.description %><br><br>
+				<% if logged_in? %>
+					<% if current_user == book.user || current_user.the_admin? %>
+						<% if current_user == book.user %>	
+							<%= button_to "Edit", edit_cookbook_path(book), method: :get, class: 'btn btn-warning' %>
+						<% end %>
+						<%= button_to "Del", cookbook_path(book), method: :delete, class: 'btn btn-danger' %>
+						<%= button_to "See", cookbook_path(book), method: :get, class: 'btn btn-success' %>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
-	</div>
-<% end %>
+	<% end %>
 <% end %>
 
+
+<!-- Recipes Search Results -->
 <% if @recipes.length > 0 %>
-<h3 class="col-md-12" style="background: white; padding:5px; text-align:center">Recipes</h3>
-<% @recipes.each do |recipe| %>
-<div class="col-md-12 recipe-table">
-	<div class="col-md-3">
-<%= image_tag(recipe.image.url, :class => "recipe-resize") %>
-</div>
-<div class="col-md-9">
-<h4><%= recipe.title %><% if current_user == recipe.cookbook.user || current_user.the_admin? %>
-	<% if current_user == recipe.cookbook.user %>	
-	[<%= link_to "Edit", edit_cookbook_recipe_path(recipe.cookbook, recipe) %>]
-	<% end %>
-	&nbsp;[<%= link_to "Delete", cookbook_recipe_path(recipe.cookbook, recipe), method: :delete %>]&nbsp;
-<% end %>&nbsp;[<%= link_to "Cookbook", cookbook_path(recipe.cookbook) %>]</h4><br>
-	<table>
-	<tr><td width="50%">
-<b>Ingredients:</b>
-	<ol>
-	<% recipe.ingredients.each do |x| %>
-		<li><%= x %></li>
-	<% end %>
-	</ol>
-	</td>
-	<td width="50%">
-<b>Steps:</b>
-	<ol>
-	<% recipe.steps.each do |y| %>
-		<li><%= y %></li>
-	<% end %>
-	</ol>
-	</td>
-	</tr>
-	</table>
-</div>
-</div>
-<% end %>
+	<h3 class="col-md-12" style="background: white; padding:5px; text-align:center">Recipes</h3>
+	<%= render :partial => 'recipes/recipelist' %>
 <% end %>
 
 <% if @recipes.length < 1 && @cookbooks.length < 1 %>
-<div class="notice"><p>Sorry, no public cookbooks or recipes match your search. Please try again.</p></div>
+	<div class="notice">
+		<p>Sorry, no public cookbooks or recipes match your search. Please try again.</p>
+	</div>
 <% end %>
 
 

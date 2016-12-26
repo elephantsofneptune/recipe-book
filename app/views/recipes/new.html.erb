@@ -1,9 +1,11 @@
-<div class="white-bg col-md-5"><h1>Create New Recipe</h1>
-<% if current_user == @cookbook.user %>
-<%= render 'form' %>
-<% else %>
-You are not permitted to add recipes to this cookbook.
-<% end %>
-<br>
+<% @title="WC? | New Recipe" %>
+<div class="white-bg col-md-5">
+	<h1>Create New Recipe</h1>
+	<% if current_user == @cookbook.user %>
+		<%= render 'form' %>
+	<% else %>
+		You are not permitted to add recipes to this cookbook.
+	<% end %>
+	<br>
 </div>
 
