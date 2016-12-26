@@ -43,8 +43,8 @@ RSpec.describe User, type: :model do
 
 	describe '#age' do
 		it "returns the user's age based on their date of birth" do
-			expect(@user_1.age).to eq 23
-			expect(@user_2.age).to eq 12
+			expect(@user_1.date_of_birth_age).to eq 23
+			expect(@user_2.date_of_birth_age).to eq 12
 		end 
 	end	
 

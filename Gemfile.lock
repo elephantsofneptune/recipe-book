@@ -50,6 +50,9 @@ GEM
       aws-sdk-core (= 2.6.40)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
+    birthday (0.3.1)
+      activerecord
+      activesupport
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -243,6 +246,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  birthday (~> 0.3.0)
   bootstrap-sass (~> 3.3.6)
   byebug
   carrierwave (>= 1.0.0.rc, < 2.0)

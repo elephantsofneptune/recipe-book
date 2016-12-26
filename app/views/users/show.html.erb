@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <td class="profile-key">
-                        <p><b>DOB</b></p>
+                        <p><b>Age</b></p>
                     </td>
                     <td class="profile-delimeter">
                         <b>:</b>
@@ -36,7 +36,7 @@
                     <td class="profile-value">
                         <p>
                         <% if !@user.date_of_birth.nil? %>
-                            <%= @user.date_of_birth %>
+                            <%= @user.date_of_birth_age %>
                         <% else %>
                             N/A
                         <% end %>
