@@ -15,3 +15,17 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(document).ready(function() {
+
+$(".ajaxdel").click(function(event){
+	event.preventDefault();
+	$.ajax({
+	    url: "/cookbooks/" + mypage_id,
+	    type: 'DELETE',
+	    success: function(result) {
+	    }
+	});
+});
+
+});
