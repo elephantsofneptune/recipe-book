@@ -1,9 +1,17 @@
 <% @title="WC? | Cookbooks" %>
 
-<h1 align="center">List of Cookbooks</h1>
+<h1 align="center">
+<% if @status == "all" %>
+	List of Cookbooks
+<% else %>
+	My Cookbooks
+<% end %>
+</h1>
 <h4 align="center"><%= will_paginate @cookbooks %></h4>
-<% if !current_user.the_admin? %>
-	<%= button_to "Create Cookbook", new_cookbook_path, method: :get, class: "btn btn-primary col-md-12" %>
+<% if current_user != nil %>
+	<% if !current_user.the_admin? %>
+		<%= button_to "Create Cookbook", new_cookbook_path, method: :get, class: "btn btn-primary col-md-12" %>
+	<% end %>
 <% end %>
 
 <%= render 'cookbooklist' %>
