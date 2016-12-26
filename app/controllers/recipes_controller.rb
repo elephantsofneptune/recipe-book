@@ -31,10 +31,10 @@ class RecipesController < ApplicationController
   def destroy
     @cookbook = Recipe.find(params[:id]).cookbook
   	Recipe.find(params[:id]).destroy
-  respond_to do |format|
-    format.html { redirect_to cookbook_path(@cookbook) }
-    format.js { }
+    respond_to do |format|
+      format.html { redirect_to cookbook_path(@cookbook) }
+      format.js { }
+    end
   end
-
-  end
+  
 end

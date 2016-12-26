@@ -29,6 +29,6 @@ feature 'Visitor signs up' do
 	    fill_in 'Password', with: password
 	    fill_in 'Password confirmation', with: confirmation
 	    click_button 'Sign Up'
-	end
+	  end
   end
 end
