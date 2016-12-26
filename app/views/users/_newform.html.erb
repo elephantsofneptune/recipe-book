@@ -1,13 +1,16 @@
 <div align="center">
+    <% @user = User.new %>
+    <br>
     <%= form_for @user do |f| %>
-        <%= f.label :email %> :
+        <%= f.label :email %> :<br>
         <%= f.text_field :email %><br><br>
-        <%= f.label :username %> :
+        <%= f.label :username %> :<br>
         <%= f.text_field :username %><br><br>
-        <%= f.label :password %> :
+        <%= f.label :password %> :<br>
         <%= f.password_field :password %><br><br>
-        <%= f.label :password_confirmation %> :
+        <%= f.label :password_confirmation %> :<br>
         <%= f.password_field :password_confirmation %><br><br>
         <%= f.submit :value => "Sign Up", class:"btn btn-primary col-md-12" %>
     <% end %>
 </div>
+<br>

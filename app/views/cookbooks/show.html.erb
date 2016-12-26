@@ -15,8 +15,8 @@
 			<% if @cookbook.subscriptions.find_by(user_id: current_user.id) == nil %>
 				<%= button_to "Subscribe", cookbook_subscriptions_path(@cookbook), class: "btn btn-primary btn-block" %>
 			<% else %>
-				<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete, class: "btn btn-danger btn-block btn-custom" %>
-			<% end %><br>
+				<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete, class: "btn btn-primary btn-block btn-custom" %>
+			<% end %>
 		<% end %>
 	<% end %>
 

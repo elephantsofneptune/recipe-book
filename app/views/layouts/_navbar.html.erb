@@ -32,7 +32,7 @@
         <a href="#">
           <i class="fa fa-dashboard fa-lg"></i>
             <% if !logged_in? %>
-              <%= link_to "Sign In", login_path %> / <%= link_to "Register", signup_path %></a>
+              <a href="#" data-toggle="modal" data-target="#myModal"> Sign In / Register </a>
             <% else %>
               <%= link_to "Sign Out", logout_path, method: :delete %>
             <% end %>
@@ -72,3 +72,41 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+
+                </button>
+                 <h4 class="modal-title" id="myModalLabel">User Authentication</h4>
+
+            </div>
+            <div class="modal-body">
+                <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#uploadTab" aria-controls="uploadTab" role="tab" data-toggle="tab">Sign In</a>
+
+                        </li>
+                        <li role="presentation"><a href="#browseTab" aria-controls="browseTab" role="tab" data-toggle="tab">Register</a>
+
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="uploadTab"><%= render :partial => 'sessions/form' %></div>
+                        <div role="tabpanel" class="tab-pane" id="browseTab"><%= render :partial => 'users/newform' %></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
