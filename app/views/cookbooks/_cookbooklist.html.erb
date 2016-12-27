@@ -1,8 +1,5 @@
 <% @cookbooks.each do |book| %>
-	<div class="col-md-3" align="center">
-		<script>
-  			var mypage_id = <%= book.id %>;
-		</script>
+	<div class="col-md-3 new-book" align="center">
 		<div class="ind-book"><br>
 			<% if book.book_cover.blank? %>
 				<img src="http://i64.tinypic.com/qxmqfn.jpg" class="bookcover-resize">
@@ -16,7 +13,7 @@
 					<% if current_user == book.user %>	
 						<%= button_to "Edit", edit_cookbook_path(book), method: :get, class: 'btn btn-warning' %>
 					<% end %>
-					<%= button_to "Del", cookbook_path(book), method: :delete, class: 'btn btn-danger ajaxdel' %>
+					<%= button_to 'Del', cookbook_path(book), method: :delete, :class=>'btn btn-danger delete_post' %>
 					<%= button_to "See", cookbook_path(book), method: :get, class: 'btn btn-success' %>
 				<% end %>
 			<% end %>
@@ -24,3 +21,9 @@
 		<br><br>
 	</div>
 <% end %>
+
+<script>
+	$( ".delete_post" ).click(function() {
+	  $( ".newbook" ).remove();
+	});
+</script>
