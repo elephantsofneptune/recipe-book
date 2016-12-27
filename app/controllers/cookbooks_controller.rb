@@ -41,7 +41,7 @@ class CookbooksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to cookbooks_path }
       format.json { head :no_content }
-      format.js   { render :layout => false }
+      format.js   { render :nothing => true }
     end
   end
 end

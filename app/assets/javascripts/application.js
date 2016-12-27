@@ -16,16 +16,10 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
-$(document).ready(function() {
+ $(document).ready(function() {
 
-$(".ajaxdel").click(function(event){
-	event.preventDefault();
-	$.ajax({
-	    url: "/cookbooks/" + mypage_id,
-	    type: 'DELETE',
-	    success: function(result) {
-	    }
+	$('.delete_post').bind('ajax:before', function() {
+		$(this).closest('tr').fadeOut();
 	});
-});
-
+	
 });
