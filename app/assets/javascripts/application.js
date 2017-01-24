@@ -15,3 +15,35 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(document).ready(function(){ 
+	$("#subscribe").click(function(event){
+		event.preventDefault;
+		$.ajax({
+            url: "/subscriptions/test",
+            cache: false,
+            dataType: "json",
+            complete: function(data) {
+            	$('#subscribe').hide();
+				$('#subscription-cancel').hide();
+				$('#subscription-success').show();
+				$('#no-subscriber').hide();
+                $('#new-subscriber').html("<img src=\"http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png\" class=\"subscriber-resize\"> Successfully subscribed!");
+            }
+        })})
+
+	$("#subscription-cancel").click(function(event){
+		event.preventDefault;
+		$.ajax({
+            url: "/subscriptions/test",
+            cache: false,
+            dataType: "json",
+            complete: function(data) {
+				$('#subscribe').hide();
+				$('#subscription-cancel').hide();
+				$('#subscription-success').show();
+				$('#no-subscriber').hide();            	
+                $('#new-subscriber').html("<img src=\"http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png\" class=\"subscriber-resize\"> Successfully subscribed!");
+            }
+        })})
+	;})
