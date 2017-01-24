@@ -24,11 +24,12 @@ $(document).ready(function(){
             cache: false,
             dataType: "json",
             complete: function(data) {
+                var json = JSON.parse(data);
             	$('#subscribe').hide();
 				$('#subscription-cancel').hide();
 				$('#subscription-success').show();
 				$('#no-subscriber').hide();
-                $('#new-subscriber').html("<img src=\"http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png\" class=\"subscriber-resize\"> Successfully subscribed!");
+                $('#new-subscriber').html("<img src=\"http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png\" class=\"subscriber-resize\" title=\"" + json.username + "\">");
             }
         })})
 
@@ -39,11 +40,12 @@ $(document).ready(function(){
             cache: false,
             dataType: "json",
             complete: function(data) {
+                var json = JSON.parse(data);
 				$('#subscribe').hide();
 				$('#subscription-cancel').hide();
 				$('#subscription-success').show();
 				$('#no-subscriber').hide();            	
-                $('#new-subscriber').html("<img src=\"http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png\" class=\"subscriber-resize\"> Successfully subscribed!");
+                $('#new-subscriber').html("<img src=\"http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png\" class=\"subscriber-resize\" title=\"" + json.username + "\">");
             }
         })})
 	;})
