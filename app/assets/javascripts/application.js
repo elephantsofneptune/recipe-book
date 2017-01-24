@@ -15,11 +15,3 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
-
- $(document).ready(function() {
-
-	$('.delete_post').bind('ajax:before', function() {
-		$(this).closest('tr').fadeOut();
-	});
-	
-});

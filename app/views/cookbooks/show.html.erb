@@ -13,16 +13,27 @@
 			<%= button_to "Add Recipe", new_cookbook_recipe_path(@cookbook), method: :get, class: "btn btn-primary col-md-12" %>
 		<% else %>
 			<% if @cookbook.subscriptions.find_by(user_id: current_user.id) == nil %>
-				<%= button_to "Subscribe", cookbook_subscriptions_path(@cookbook), class: "btn btn-primary btn-block" %>
+			<span id="subscribe">
+				<%= button_to "Subscribe", cookbook_subscriptions_path(@cookbook), class: 'btn btn-primary btn-block', remote: true %>
+			</span>
 			<% else %>
-				<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete, class: "btn btn-primary btn-block btn-custom" %>
+			<span id="unsubscribe">
+				<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete, class: "btn btn-primary btn-block btn-custom", remote: true %>
+			</span>				
 			<% end %>
+			<span id="subscription-success" style="display: none">
+				<%= button_to "Unsubscribe", cookbook_subscription_path(cookbook_id: @cookbook.id, user_id: current_user.id), method: :delete, class: "btn btn-primary btn-block btn-custom", remote: true %>
+			</span>
+			<span id="subscription-cancel" style="display: none">
+				<%= button_to "Subscribe", cookbook_subscriptions_path(@cookbook), class: 'btn btn-primary btn-block', remote: true %>
+			</span>
 		<% end %>
 	<% end %>
-
+	<br>
+	<u>Subscribers:</u><br>
+	<div id="subscriber-list">
 	<% if @cookbook.subscriptions.count > 0 %>
 		<% num = 0 %><br>
-		<u>Subscribers:</u><br> 
 		<% @cookbook.subscriptions.all.each do |subscribers| %>
 			<% @subscribed_user = User.find(subscribers.user_id) %>
 			<a href="/users/<%= subscribers.user_id %>">
@@ -38,7 +49,24 @@
 				<break>
 			<% end %>
 		<% end %>
-	<% end %><br>
+	<% else %>
+	<span id="no-subscriber">
+		<img src="http://www.publicdomainpictures.net/pictures/40000/velka/question-mark.jpg" class="subscriber-resize" title="No Subscribers Yet!">
+	</span>
+	<% end %>
+	<span id='new-subscriber'></span>
+	</div>
+
+	<span id="auto-update" style="display: none">
+		<u>New Subscribers:</u><br> 
+		<% if current_user.avatar.blank? %>
+			<img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="subscriber-resize" title="<%= current_user.username %>">
+		<% else %>
+					<%= image_tag(current_user.avatar.url, :class => "subscriber-resize", title: current_user.username) %>
+		<% end %>
+	</span>
+
+	<br>
 
 	<%= render :partial => 'recipes/recipelist' %>
 
