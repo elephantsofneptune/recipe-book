@@ -30,41 +30,32 @@
 		<% end %>
 	<% end %>
 	<br>
-	<u>Subscribers:</u><br>
+	<u>Subscribers:</u>
 	<div id="subscriber-list">
-	<% if @cookbook.subscriptions.count > 0 %>
-		<% num = 0 %><br>
-		<% @cookbook.subscriptions.all.each do |subscribers| %>
-			<% @subscribed_user = User.find(subscribers.user_id) %>
-			<a href="/users/<%= subscribers.user_id %>">
-				<% if @subscribed_user.avatar.blank? %>
-					<img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="subscriber-resize" title="<%= @subscribed_user.username %>">
-				<% else %>
-					<%= image_tag(@subscribed_user.avatar.url, :class => "subscriber-resize", title: @subscribed_user.username) %>
+		<% if @cookbook.subscriptions.count > 0 %>
+			<% num = 0 %><br>
+			<% @cookbook.subscriptions.all.each do |subscribers| %>
+				<% @subscribed_user = User.find(subscribers.user_id) %>
+				<a href="/users/<%= subscribers.user_id %>">
+					<% if @subscribed_user.avatar.blank? %>
+						<img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="subscriber-resize" title="<%= @subscribed_user.username %>">
+					<% else %>
+						<%= image_tag(@subscribed_user.avatar.url, :class => "subscriber-resize", title: @subscribed_user.username) %>
+					<% end %>
+				</a>
+				<% num += 1 %>
+				<% if num >= 10 %>
+					<b>+</b>
+					<break>
 				<% end %>
-			</a>
-			<% num += 1 %>
-			<% if num >= 10 %>
-				<b>+</b>
-				<break>
 			<% end %>
-		<% end %>
-	<% else %>
-	<span id="no-subscriber">
-		<img src="http://www.publicdomainpictures.net/pictures/40000/velka/question-mark.jpg" class="subscriber-resize" title="No Subscribers Yet!">
-	</span>
-	<% end %>
-	<span id='new-subscriber'></span>
-	</div>
-
-	<span id="auto-update" style="display: none">
-		<u>New Subscribers:</u><br> 
-		<% if current_user.avatar.blank? %>
-			<img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="subscriber-resize" title="<%= current_user.username %>">
 		<% else %>
-					<%= image_tag(current_user.avatar.url, :class => "subscriber-resize", title: current_user.username) %>
+		<span id="no-subscriber">
+			<img src="http://www.publicdomainpictures.net/pictures/40000/velka/question-mark.jpg" class="subscriber-resize" title="No Subscribers Yet!">
+		</span>
 		<% end %>
-	</span>
+		<span id='new-subscriber'></span>
+	</div>
 
 	<br>
 
